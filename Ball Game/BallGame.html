@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Animação com Sprites</title>
+   <script src="animacao.js"></script>
+   <script src="bola.js"></script>
+</head>
+
+<body>
+   <canvas id="canvas_animacao" width="500" height="500" style="border: 1px solid black;"></canvas>
+   <script>
+      // Referências para o Canvas
+      var canvas = document.getElementById('canvas_animacao');
+      var context = canvas.getContext('2d');
+      
+      // --- INÍCIO DA ALTERAÇÃO ---
+      // Carregar a imagem dos sprites
+      var imgBolas = new Image();
+      imgBolas.src = 'bolas.png';
+
+      // A animação só começa DEPOIS que a imagem for carregada!
+      imgBolas.onload = function() {
+         // Criando a animação
+         var animacao = new Animacao(context);
+
+         // Criando a primeira bola (Vôlei)
+         var b1 = new Bola(context);
+         b1.img = imgBolas;
+         b1.recorteX = 0;  // Posição X da bola de vôlei na imagem
+         b1.recorteY = 0;  // Posição Y
+         b1.x = 100;
+         b1.y = 200;
+         b1.raio = 30;
+         b1.velocidadeX = 2;
+         b1.velocidadeY = -3;
+         animacao.novoSprite(b1);
+
+         // Criando a segunda bola (Basquete)
+         var b2 = new Bola(context);
+         b2.img = imgBolas;
+         b2.recorteX = 340; // Posição X da bola de basquete na imagem
+         b2.recorteY = 170; // Posição Y
+         b2.x = 200;
+         b2.y = 100;
+         b2.raio = 40;
+         b2.velocidadeX = -3;
+         b2.velocidadeY = 2;
+         animacao.novoSprite(b2);
+
+         // Criando a terceira bola 
+         var b3 = new Bola(context);
+         b3.img = imgBolas;
+         b3.recorteX = 170; // Posição X da bola de basquete na imagem
+         b3.recorteY = 170; // Posição Y
+         b3.x = 200;
+         b3.y = 100;
+         b3.raio = 35;
+         b3.velocidadeX = -4;
+         b3.velocidadeY = 6;
+         animacao.novoSprite(b3);
+
+
+          // Criando a terceira bola 
+         var b4 = new Bola(context);
+         b4.img = imgBolas;
+         b4.recorteX = 25; // Posição X da bola de basquete na imagem
+         b4.recorteY = 170; // Posição Y
+         b4.x = 200;
+         b4.y = 100;
+         b4.raio = 25;
+         b4.velocidadeX = -6;
+         b4.velocidadeY = 2;
+         animacao.novoSprite(b4);
+
+         // "Ligar" a animação
+         animacao.ligar();
+      }
+      // --- FIM DA ALTERAÇÃO ---
+   </script>
+</body>
+
+</html>
